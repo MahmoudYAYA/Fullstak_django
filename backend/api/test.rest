@@ -1,0 +1,41 @@
+# pour cette erreur ""POST /api/transactions/ HTTP/1.1" 415 62" , j'ia importer X-CSRFToken: {{csrf_token}} pour que ça fonctionne 
+POST http://localhost:8000/api/transactions/
+Content-Type: application/json
+X-CSRFToken: {{ csrf_token }}  
+
+{
+    "text": "Salaire Aout",
+    "amount": 2000.00
+}
+
+### Trois ### permet de séparer les appelles des api, quand on est dans un fichier rest 
+
+GET http://localhost:8000/api/transactions/
+
+
+
+### 
+DELETE http://localhost:8000/api/transactions/6a296721-8a7f-4804-bba9-6f5a78b6ca35/
+
+
+### la method PUT permet modifier les champs existant, sans supprimer le champs 
+PUT http://localhost:8000/api/transactions/6a296721-8a7f-4804-bba9-6f5a78b6ca35/
+Content-Type: application/json
+X-CSRFToken: {{ csrf_token }}  
+
+{
+    "text": "Salaire MARS",
+    "amount": 2000.00
+}
+
+
+### mais le PATCH permet de moifier des information si on veux supprimer seratians champs de l'élément modifier 
+
+PATCH  http://localhost:8000/api/transactions/6a296721-8a7f-4804-bba9-6f5a78b6ca35/
+Content-Type: application/json
+X-CSRFToken: {{ csrf_token }}  
+
+{
+    "text": "Salaire MARS",
+    
+}
